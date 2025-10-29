@@ -57,4 +57,5 @@ dependencies {
     implementation(libs.recyclerview)
     // Picasso para cargar imágenes (banderas, íconos de clima)
     implementation(libs.picasso)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }
