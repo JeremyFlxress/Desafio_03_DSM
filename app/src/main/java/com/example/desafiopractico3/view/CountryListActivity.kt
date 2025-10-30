@@ -54,6 +54,7 @@ class CountryListActivity : AppCompatActivity() {
                 countryAdapter = CountryAdapter(countries) { country ->
                     val intent = Intent(this@CountryListActivity, CountryDetailActivity::class.java)
                     intent.putExtra("country", country)
+                    android.util.Log.d("CountryListActivity", "Starting CountryDetailActivity with country: ${country.name.common}")
                     startActivity(intent)
                 }
                 binding.recyclerViewCountries.adapter = countryAdapter

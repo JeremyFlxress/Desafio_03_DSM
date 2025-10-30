@@ -23,7 +23,13 @@ class CountryDetailActivity : AppCompatActivity() {
         binding = ActivityCountryDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val country = intent.getParcelableExtra<CountryResponse>("country")
+        val country = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("country", CountryResponse::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra("country")
+        }
+        android.util.Log.d("CountryDetailActivity", "Received country: $country")
         if (country == null) {
             Toast.makeText(this, "Country not found", Toast.LENGTH_SHORT).show()
             finish()
@@ -69,7 +75,7 @@ class CountryDetailActivity : AppCompatActivity() {
                     Glide.with(this@CountryDetailActivity).load("https:${weatherResponse.current.condition.icon}").into(imageViewWeatherIcon)
                     textViewTemperature.text = "${weatherResponse.current.tempC}°C"
                     textViewWeatherCondition.text = weatherResponse.current.condition.text
-                    textViewWind.text = "Wind: ${weatherResponse.current.windKph} kph"
+                    textViewWind.text = "Wind: ${weatherResponse.current.windMph} mph"
                     textViewHumidity.text = "Humidity: ${weatherResponse.current.humidity}%"
                 }
             } catch (e: Exception) {

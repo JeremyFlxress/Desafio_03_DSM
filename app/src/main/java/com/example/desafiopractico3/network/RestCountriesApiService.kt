@@ -14,7 +14,7 @@ interface RestCountriesApiService {
     @GET("v3.1/region/{regionName}")
     suspend fun getCountriesByRegion(
         @Path("regionName") region: String,
-        @Query("fields") fields: String = "name,capital,flags,latlng,subregion,population,currencies,languages"
+        @Query("fields") fields: String = "name,capital,flags,latlng,subregion,population,currencies,languages,region"
     ): List<CountryResponse>
 
 }
