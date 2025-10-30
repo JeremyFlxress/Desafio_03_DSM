@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -9,6 +11,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -31,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
@@ -49,13 +52,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     // Retrofit y Gson
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp.logging.interceptor) // para depurar
+
     // RecyclerView para las listas
     implementation(libs.recyclerview)
-    // Picasso para cargar imágenes (banderas, íconos de clima)
-    implementation(libs.picasso)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.glide)
+    ksp(libs.glide.ksp)
+    
 }
+
