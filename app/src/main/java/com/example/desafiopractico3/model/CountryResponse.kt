@@ -1,15 +1,16 @@
 package com.example.desafiopractico3.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 // Esta es la clase principal para cada país en la lista
+@Parcelize
 data class CountryResponse(
-    // Usamos @SerializedName para conectar la clave "name" del JSON
-    // con nuestra variable "nameInfo" [cite: 1282]
     @SerializedName("name")
-    val nameInfo: Name,
+    val name: Name,
 
-    val capital: List<String>?, // La API a veces no trae capital
+    val capital: List<String>?,
 
     val region: String,
 
@@ -18,27 +19,32 @@ data class CountryResponse(
     val population: Long,
 
     @SerializedName("flags")
-    val flagInfo: Flags,
+    val flags: Flags,
 
-    val currencies: Map<String, Currency>?, // Objeto de objetos
+    val currencies: HashMap<String, Currency>?,
 
-    val languages: Map<String, String>? // Objeto de strings
-)
+    val languages: HashMap<String, String>?,
+
+    val latlng: List<Double>?
+) : Parcelable
 
 // Clase para el objeto anidado "name"
+@Parcelize
 data class Name(
     val common: String,
     val official: String
-)
+) : Parcelable
 
 // Clase para el objeto anidado "flags"
+@Parcelize
 data class Flags(
     val png: String,
     val svg: String
-)
+) : Parcelable
 
 // Clase para el objeto anidado "currencies"
+@Parcelize
 data class Currency(
     val name: String,
     val symbol: String?
-)
+) : Parcelable
