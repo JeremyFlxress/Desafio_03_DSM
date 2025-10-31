@@ -3,7 +3,7 @@
     <string name="app_name">World Countries</string>
 
     <!-- Main Activity -->
-    <string name="regions_title">Explore Regions</string>
+    <string name="regions_title">Explorar Regiones</string>
     <string name="loading">Loading…</string>
 
     <!-- Country Detail Labels -->
