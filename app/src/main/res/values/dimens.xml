@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">12dp</dimen>
+    <dimen name="spacing_default">16dp</dimen>
+    <dimen name="spacing_lg">20dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+
+    <!-- Card Properties -->
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_margin_horizontal">16dp</dimen>
+    <dimen name="card_margin_vertical">8dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_display">36sp</dimen>
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_body_large">18sp</dimen>
+    <dimen name="text_size_body">16sp</dimen>
+    <dimen name="text_size_body_small">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+
+    <!-- Image Sizes -->
+    <dimen name="flag_width">100dp</dimen>
+    <dimen name="flag_height">70dp</dimen>
+    <dimen name="flag_detail_height">220dp</dimen>
+    <dimen name="weather_icon_size">80dp</dimen>
+
+    <!-- Divider -->
+    <dimen name="divider_height">1dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_size_sm">16dp</dimen>
+    <dimen name="icon_size_md">24dp</dimen>
+    <dimen name="icon_size_lg">32dp</dimen>
+</resources>

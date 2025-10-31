@@ -1,193 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".view.CountryDetailActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <ImageView
-            android:id="@+id/imageViewFlag"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            app:contentScrim="@color/primary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
 
-        <TextView
-            android:id="@+id/textViewOfficialName"
-            android:layout_width="0dp"
+            <!-- Bandera como header -->
+            <ImageView
+                android:id="@+id/imageViewFlag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/cd_flag"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="0dp"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+                app:navigationIconTint="@color/text_on_primary" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewFlag"
-            tools:text="Official Name" />
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_default">
 
-        <TextView
-            android:id="@+id/textViewCapital"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewOfficialName"
-            tools:text="Capital:" />
+            <!-- Card: Información General -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_default"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
 
-        <!-- Add other country details here -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
 
-        <TextView
-            android:id="@+id/textViewRegion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCapital"
-            tools:text="Region:" />
+                    <!-- Nombre oficial -->
+                    <TextView
+                        android:id="@+id/textViewOfficialName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_size_headline"
+                        android:textStyle="bold"
+                        tools:text="Republic of South Africa" />
 
-        <TextView
-            android:id="@+id/textViewSubregion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRegion"
-            tools:text="Subregion:" />
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_height"
+                        android:layout_marginVertical="@dimen/spacing_default"
+                        android:background="@color/divider" />
 
-        <TextView
-            android:id="@+id/textViewPopulation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSubregion"
-            tools:text="Population:" />
+                    <!-- Capital -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewLanguages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPopulation"
-            tools:text="Languages:" />
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_capital"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
 
-        <TextView
-            android:id="@+id/textViewCurrencies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLanguages"
-            tools:text="Currencies:" />
+                        <TextView
+                            android:id="@+id/textViewCapital"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="Pretoria" />
+                    </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewLatLng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCurrencies"
-            tools:text="Lat/Lng:" />
+                    <!-- Region -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
 
-        <!-- Weather Section -->
-        <View
-            android:id="@+id/divider"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLatLng" />
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_region"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
 
-        <TextView
-            android:id="@+id/textViewWeatherTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Weather"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+                        <TextView
+                            android:id="@+id/textViewRegion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="Africa" />
+                    </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/weatherProgressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherTitle" />
+                    <!-- Subregion -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageViewWeatherIcon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherTitle"
-            tools:srcCompat="@tools:sample/weather" />
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_subregion"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
 
-        <TextView
-            android:id="@+id/textViewTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewWeatherIcon"
-            app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"
-            app:layout_constraintTop_toTopOf="@+id/imageViewWeatherIcon"
-            tools:text="25°C" />
+                        <TextView
+                            android:id="@+id/textViewSubregion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="Southern Africa" />
+                    </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewWeatherCondition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherIcon"
-            tools:text="Sunny" />
+                    <!-- Population -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewWind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherCondition"
-            tools:text="Wind: 10 kph" />
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_population"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
 
-        <TextView
-            android:id="@+id/textViewHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWind"
-            tools:text="Humidity: 50%" />
+                        <TextView
+                            android:id="@+id/textViewPopulation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="59,308,690" />
+                    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!-- Languages -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
 
-</ScrollView>
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_languages"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
+
+                        <TextView
+                            android:id="@+id/textViewLanguages"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="English, Afrikaans, Zulu" />
+                    </LinearLayout>
+
+                    <!-- Currencies -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_currencies"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
+
+                        <TextView
+                            android:id="@+id/textViewCurrencies"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="South African rand (ZAR)" />
+                    </LinearLayout>
+
+                    <!-- Coordinates -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_coordinates"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_size_body" />
+
+                        <TextView
+                            android:id="@+id/textViewLatLng"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_size_body"
+                            android:textStyle="bold"
+                            tools:text="-30.5595, 22.9375" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card: Weather Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_default"
+                app:cardBackgroundColor="@color/weather_background"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Weather Title -->
+                    <TextView
+                        android:id="@+id/textViewWeatherTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_default"
+                        android:text="@string/weather_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_size_title"
+                        android:textStyle="bold" />
+
+                    <!-- ProgressBar para clima -->
+                    <ProgressBar
+                        android:id="@+id/weatherProgressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/spacing_xl"
+                        android:indeterminateTint="@color/primary"
+                        android:visibility="gone" />
+
+                    <!-- Weather Content -->
+                    <LinearLayout
+                        android:id="@+id/weatherContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Icon y Temperatura -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageViewWeatherIcon"
+                                android:layout_width="@dimen/weather_icon_size"
+                                android:layout_height="@dimen/weather_icon_size"
+                                android:contentDescription="@string/cd_weather_icon"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_default"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/textViewTemperature"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="@dimen/text_size_display"
+                                    android:textStyle="bold"
+                                    tools:text="25°C" />
+
+                                <TextView
+                                    android:id="@+id/textViewWeatherCondition"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="@dimen/text_size_body_large"
+                                    tools:text="Partly Cloudy" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_height"
+                            android:layout_marginVertical="@dimen/spacing_default"
+                            android:background="@color/divider" />
+
+                        <!-- Wind & Humidity Grid -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!-- Wind -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Wind"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="@dimen/text_size_body_small" />
+
+                                <TextView
+                                    android:id="@+id/textViewWind"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_xs"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="@dimen/text_size_body_large"
+                                    android:textStyle="bold"
+                                    tools:text="10 kph" />
+
+                            </LinearLayout>
+
+                            <!-- Humidity -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Humidity"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="@dimen/text_size_body_small" />
+
+                                <TextView
+                                    android:id="@+id/textViewHumidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_xs"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="@dimen/text_size_body_large"
+                                    android:textStyle="bold"
+                                    tools:text="50%" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
