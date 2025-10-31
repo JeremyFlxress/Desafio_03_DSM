@@ -1,3 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WindFlag</string>
+    <string name="app_name">World Countries</string>
+
+    <!-- Main Activity -->
+    <string name="regions_title">Explore Regions</string>
+    <string name="loading">Loading…</string>
+
+    <!-- Country Detail Labels -->
+    <string name="label_official_name">Official Name</string>
+    <string name="label_capital">Capital:</string>
+    <string name="label_region">Region:</string>
+    <string name="label_subregion">Subregion:</string>
+    <string name="label_population">Population:</string>
+    <string name="label_languages">Languages:</string>
+    <string name="label_currencies">Currencies:</string>
+    <string name="label_coordinates">Coordinates:</string>
+
+    <!-- Weather Section -->
+    <string name="weather_title">Current Weather</string>
+    <string name="weather_loading">Loading weather data…</string>
+    <string name="weather_wind">Wind: %1$s kph</string>
+    <string name="weather_humidity">Humidity: %1$d%%</string>
+    <string name="weather_feels_like">Feels like %1$s</string>
+    <string name="weather_error">Unable to load weather</string>
+
+    <!-- Common -->
+    <string name="no_data">No data available</string>
+    <string name="error_loading">Error loading data</string>
+    <string name="retry">Retry</string>
+
+    <!-- Content Descriptions (Accessibility) -->
+    <string name="cd_flag">Country flag</string>
+    <string name="cd_weather_icon">Weather icon</string>
+
+    <!-- Temperature Format -->
+    <string name="temperature_celsius">%1$.1f°C</string>
 </resources>

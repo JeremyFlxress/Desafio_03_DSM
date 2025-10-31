@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Colors -->
+    <color name="primary">#2563EB</color>
+    <color name="primary_dark">#1E40AF</color>
+    <color name="primary_light">#DBEAFE</color>
+
+    <!-- Accent Colors -->
+    <color name="accent">#10B981</color>
+    <color name="accent_dark">#059669</color>
+    <color name="accent_light">#D1FAE5</color>
+
+    <!-- Background Colors -->
+    <color name="background">#F9FAFB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F3F4F6</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_tertiary">#9CA3AF</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Divider & Border -->
+    <color name="divider">#E5E7EB</color>
+    <color name="border">#D1D5DB</color>
+
+    <!-- Status Colors -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    <color name="info">#3B82F6</color>
+
+    <!-- Weather Card Background -->
+    <color name="weather_background">#EFF6FF</color>
+
+    <!-- Transparent Overlays -->
+    <color name="overlay_light">#1A000000</color>
+    <color name="overlay_dark">#4D000000</color>
 </resources>
