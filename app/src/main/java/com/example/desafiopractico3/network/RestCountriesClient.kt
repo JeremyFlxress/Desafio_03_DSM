@@ -5,7 +5,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// Usamos 'object' para crear un Singleton
 object RestCountriesClient {
 
     // URL Base de la API de RestCountries
