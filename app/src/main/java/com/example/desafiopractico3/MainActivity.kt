@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadRegions() {
         if (!isInternetAvailable(this)) {
-            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No hay conexión a internet", Toast.LENGTH_SHORT).show()
             binding.progressBar.visibility = View.GONE
             return
         }

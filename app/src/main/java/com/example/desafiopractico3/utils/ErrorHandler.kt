@@ -9,9 +9,9 @@ object ErrorHandler {
         return when (e) {
             is HttpException -> {
                 when (e.code()) {
-                    401, 403 -> "Invalid API Key"
-                    404 -> "Not Found"
-                    in 500..599 -> "Server Error"
+                    401, 403 -> "API KEY Invalida"
+                    404 -> "No se encontró"
+                    in 500..599 -> "Error del servidor"
                     else -> "Http Error: ${e.code()}"
                 }
             }
