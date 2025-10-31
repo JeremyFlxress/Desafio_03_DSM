@@ -8,7 +8,7 @@
     android:background="@color/background"
     tools:context=".view.CountryListActivity">
 
-    <!-- Header con título dinámico (nombre de la región) -->
+    <!-- Header con título -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -22,7 +22,7 @@
         app:titleTextColor="@color/text_on_primary"
         tools:title="African Countries" />
 
-    <!-- RecyclerView de países -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCountries"
         android:layout_width="0dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:listitem="@layout/item_country" />
 
-    <!-- Overlay para loading -->
+    <!-- Overlay -->
     <View
         android:id="@+id/loadingOverlay"
         android:layout_width="0dp"
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <!-- ProgressBar centrado -->
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
